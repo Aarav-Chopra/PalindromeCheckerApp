@@ -43,8 +43,8 @@ public class PalindromeCheckerApp {
             }
         }
 
-        // Display Result
-        if (isPalindrome) {
+        // Compare original and reversed string
+        if (input.equals(reversed)) {
             System.out.println("Result: \"" + input + "\" is a Palindrome.");
         } else {
             System.out.println("Result: \"" + input + "\" is NOT a Palindrome.");
