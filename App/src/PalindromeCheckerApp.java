@@ -1,39 +1,47 @@
 /*
  * Application Name : PalindromeChecker App
  * Version          : 1.0
- * Use Case 5       : Stack-Based Palindrome Checker
+ * Use Case 7       : Deque-Based Optimized Palindrome Checker
  */
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
         // Hardcoded string (can be modified for testing)
-        String input = "madam";
+        String input = "rotator";
 
         System.out.println("PalindromeChecker App - Version 1.0");
         System.out.println("-------------------------------------");
         System.out.println("Input String: " + input);
 
-        // Create Stack to store characters
-        Stack<Character> stack = new Stack<>();
+        // Create Deque (Double Ended Queue)
+        Deque<Character> deque = new ArrayDeque<>();
 
-        // Push characters into stack
+        // Insert characters into deque
         for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
+            deque.addLast(input.charAt(i));  // Add to rear
         }
 
-        // Pop characters and build reversed string
-        String reversed = "";
+        // Compare front and rear characters
+        boolean isPalindrome = true;
 
-        while (!stack.isEmpty()) {
-            reversed = reversed + stack.pop();
+        while (deque.size() > 1) {
+
+            char front = deque.removeFirst();  // Remove from front
+            char rear = deque.removeLast();    // Remove from rear
+
+            if (front != rear) {
+                isPalindrome = false;
+                break;
+            }
         }
 
-        // Compare original and reversed string
-        if (input.equals(reversed)) {
+        // Display Result
+        if (isPalindrome) {
             System.out.println("Result: \"" + input + "\" is a Palindrome.");
         } else {
             System.out.println("Result: \"" + input + "\" is NOT a Palindrome.");
