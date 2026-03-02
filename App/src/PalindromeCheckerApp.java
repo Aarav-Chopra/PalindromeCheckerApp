@@ -1,33 +1,34 @@
 /*
  * Application Name : PalindromeChecker App
  * Version          : 1.0
- * Use Case 2       : Print Hardcoded Palindrome Result
+ * Use Case 3       : Palindrome Check Using String Reverse
  */
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Hardcoded string literal
-        String word = "madam";
+        // Hardcoded string (can be changed for testing)
+        String original = "level";
 
-        // Display the word being checked
         System.out.println("PalindromeChecker App - Version 1.0");
         System.out.println("-------------------------------------");
-        System.out.println("Checking word: " + word);
+        System.out.println("Original String: " + original);
 
-        // Reverse the string
-        String reversedWord = "";
-        
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversedWord = reversedWord + word.charAt(i);
+        // Reverse the string using for loop
+        String reversed = "";
+
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);   // String concatenation
         }
 
-        // Conditional check using if-else
-        if (word.equals(reversedWord)) {
-            System.out.println("Result: \"" + word + "\" is a Palindrome.");
+        System.out.println("Reversed String: " + reversed);
+
+        // Compare original and reversed using equals()
+        if (original.equals(reversed)) {
+            System.out.println("Result: \"" + original + "\" is a Palindrome.");
         } else {
-            System.out.println("Result: \"" + word + "\" is NOT a Palindrome.");
+            System.out.println("Result: \"" + original + "\" is NOT a Palindrome.");
         }
 
         System.out.println("-------------------------------------");
