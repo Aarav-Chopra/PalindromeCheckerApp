@@ -1,34 +1,44 @@
 /*
  * Application Name : PalindromeChecker App
  * Version          : 1.0
- * Use Case 3       : Palindrome Check Using String Reverse
+ * Use Case 4       : Character Array Based Palindrome Check
  */
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Hardcoded string (can be changed for testing)
-        String original = "level";
+        // Hardcoded string (can be modified for testing)
+        String input = "racecar";
 
         System.out.println("PalindromeChecker App - Version 1.0");
         System.out.println("-------------------------------------");
-        System.out.println("Original String: " + original);
+        System.out.println("Input String: " + input);
 
-        // Reverse the string using for loop
-        String reversed = "";
+        // Convert String to Character Array
+        char[] characters = input.toCharArray();
 
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed = reversed + original.charAt(i);   // String concatenation
+        // Two-pointer technique
+        int start = 0;
+        int end = characters.length - 1;
+        boolean isPalindrome = true;
+
+        while (start < end) {
+
+            if (characters[start] != characters[end]) {
+                isPalindrome = false;
+                break;
+            }
+
+            start++;
+            end--;
         }
 
-        System.out.println("Reversed String: " + reversed);
-
-        // Compare original and reversed using equals()
-        if (original.equals(reversed)) {
-            System.out.println("Result: \"" + original + "\" is a Palindrome.");
+        // Display Result
+        if (isPalindrome) {
+            System.out.println("Result: \"" + input + "\" is a Palindrome.");
         } else {
-            System.out.println("Result: \"" + original + "\" is NOT a Palindrome.");
+            System.out.println("Result: \"" + input + "\" is NOT a Palindrome.");
         }
 
         System.out.println("-------------------------------------");
