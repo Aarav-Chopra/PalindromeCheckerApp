@@ -1,5 +1,16 @@
 public class PalindromeCheckerApp {
 
+    // Node class for Singly Linked List
+    static class Node {
+        char data;
+        Node next;
+
+        Node(char data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
     public static void main(String[] args) {
 
         String input = "refer";
