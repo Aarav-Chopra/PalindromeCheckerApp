@@ -10,6 +10,17 @@ import java.util.Stack;
 
 public class PalindromeCheckerApp {
 
+    // Node class for Singly Linked List
+    static class Node {
+        char data;
+        Node next;
+
+        Node(char data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
     public static void main(String[] args) {
 
         // Hardcoded string (can be modified for testing)
@@ -43,8 +54,8 @@ public class PalindromeCheckerApp {
             }
         }
 
-        // Compare original and reversed string
-        if (input.equals(reversed)) {
+        // Display result
+        if (isPalindrome) {
             System.out.println("Result: \"" + input + "\" is a Palindrome.");
         } else {
             System.out.println("Result: \"" + input + "\" is NOT a Palindrome.");
