@@ -1,34 +1,51 @@
 /*
  * Application Name : PalindromeChecker App
  * Version          : 1.0
- * Use Case 10      : Case-Insensitive & Space-Ignored Palindrome
+ * Use Case 11      : Object-Oriented Palindrome Service
  */
 
+// Service class that encapsulates palindrome logic
+class PalindromeChecker {
+
+    // Method to check palindrome
+    public boolean checkPalindrome(String input) {
+
+        int start = 0;
+        int end = input.length() - 1;
+
+        while (start < end) {
+
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+
+            start++;
+            end--;
+        }
+
+        return true;
+    }
+}
+
+// Main Application class
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Hardcoded string with spaces and mixed case
-        String input = "A man a plan a canal Panama";
+        String input = "level";
 
         System.out.println("PalindromeChecker App - Version 1.0");
         System.out.println("-------------------------------------");
-        System.out.println("Original Input: " + input);
+        System.out.println("Input String: " + input);
 
-        // Step 1: Normalize string
-        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+        // Create object of PalindromeChecker
+        PalindromeChecker checker = new PalindromeChecker();
 
-        System.out.println("Normalized Input: " + normalized);
+        // Call service method
+        boolean result = checker.checkPalindrome(input);
 
-        // Step 2: Reverse the normalized string
-        String reversed = "";
-
-        for (int i = normalized.length() - 1; i >= 0; i--) {
-            reversed = reversed + normalized.charAt(i);
-        }
-
-        // Step 3: Compare strings
-        if (normalized.equals(reversed)) {
+        // Display result
+        if (result) {
             System.out.println("Result: \"" + input + "\" is a Palindrome.");
         } else {
             System.out.println("Result: \"" + input + "\" is NOT a Palindrome.");
@@ -36,21 +53,5 @@ public class PalindromeCheckerApp {
 
         System.out.println("-------------------------------------");
         System.out.println("Program completed.");
-    }
-
-    public static boolean checkPalindrome(String str, int start, int end) {
-
-        // Base Condition
-        if (start >= end) {
-            return true;
-        }
-
-        // If characters mismatch
-        if (str.charAt(start) != str.charAt(end)) {
-            return false;
-        }
-
-        // Recursive Call
-        return checkPalindrome(str, start + 1, end - 1);
     }
 }
