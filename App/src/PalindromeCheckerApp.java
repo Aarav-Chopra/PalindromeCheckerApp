@@ -37,4 +37,20 @@ public class PalindromeCheckerApp {
         System.out.println("-------------------------------------");
         System.out.println("Program completed.");
     }
+
+    public static boolean checkPalindrome(String str, int start, int end) {
+
+        // Base Condition
+        if (start >= end) {
+            return true;
+        }
+
+        // If characters mismatch
+        if (str.charAt(start) != str.charAt(end)) {
+            return false;
+        }
+
+        // Recursive Call
+        return checkPalindrome(str, start + 1, end - 1);
+    }
 }
