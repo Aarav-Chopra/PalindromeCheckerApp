@@ -1,39 +1,34 @@
 /*
  * Application Name : PalindromeChecker App
  * Version          : 1.0
- * Use Case 5       : Stack-Based Palindrome Checker
+ * Use Case 10      : Case-Insensitive & Space-Ignored Palindrome
  */
-
-import java.util.Stack;
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Hardcoded string (can be modified for testing)
-        String input = "madam";
+        // Hardcoded string with spaces and mixed case
+        String input = "A man a plan a canal Panama";
 
         System.out.println("PalindromeChecker App - Version 1.0");
         System.out.println("-------------------------------------");
-        System.out.println("Input String: " + input);
+        System.out.println("Original Input: " + input);
 
-        // Create Stack to store characters
-        Stack<Character> stack = new Stack<>();
+        // Step 1: Normalize string
+        String normalized = input.replaceAll("\\s+", "").toLowerCase();
 
-        // Push characters into stack
-        for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
-        }
+        System.out.println("Normalized Input: " + normalized);
 
-        // Pop characters and build reversed string
+        // Step 2: Reverse the normalized string
         String reversed = "";
 
-        while (!stack.isEmpty()) {
-            reversed = reversed + stack.pop();
+        for (int i = normalized.length() - 1; i >= 0; i--) {
+            reversed = reversed + normalized.charAt(i);
         }
 
-        // Compare original and reversed string
-        if (input.equals(reversed)) {
+        // Step 3: Compare strings
+        if (normalized.equals(reversed)) {
             System.out.println("Result: \"" + input + "\" is a Palindrome.");
         } else {
             System.out.println("Result: \"" + input + "\" is NOT a Palindrome.");
