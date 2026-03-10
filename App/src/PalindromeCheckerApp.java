@@ -1,27 +1,34 @@
+/*
+ * Application Name : PalindromeChecker App
+ * Version          : 1.0
+ * Use Case 10      : Case-Insensitive & Space-Ignored Palindrome
+ */
+
 public class PalindromeCheckerApp {
-
-    // Node class for Singly Linked List
-    static class Node {
-        char data;
-        Node next;
-
-        Node(char data) {
-            this.data = data;
-            this.next = null;
-        }
-    }
 
     public static void main(String[] args) {
 
-        String input = "refer";
+        // Hardcoded string with spaces and mixed case
+        String input = "A man a plan a canal Panama";
 
         System.out.println("PalindromeChecker App - Version 1.0");
         System.out.println("-------------------------------------");
-        System.out.println("Input String: " + input);
+        System.out.println("Original Input: " + input);
 
-        boolean isPalindrome = checkPalindrome(input, 0, input.length() - 1);
+        // Step 1: Normalize string
+        String normalized = input.replaceAll("\\s+", "").toLowerCase();
 
-        if (isPalindrome) {
+        System.out.println("Normalized Input: " + normalized);
+
+        // Step 2: Reverse the normalized string
+        String reversed = "";
+
+        for (int i = normalized.length() - 1; i >= 0; i--) {
+            reversed = reversed + normalized.charAt(i);
+        }
+
+        // Step 3: Compare strings
+        if (normalized.equals(reversed)) {
             System.out.println("Result: \"" + input + "\" is a Palindrome.");
         } else {
             System.out.println("Result: \"" + input + "\" is NOT a Palindrome.");
